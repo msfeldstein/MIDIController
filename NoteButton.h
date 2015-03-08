@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 #include "MIDIControl.h"
-#include "./MIDISetup.h"
+#include "MIDISetup.h"
 
 class NoteButton : public MIDIControl {
   public:

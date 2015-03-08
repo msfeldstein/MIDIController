@@ -8,7 +8,7 @@
 #include "MIDIControl.h"
 #include "ControlInput.h"
 #include "NoteButton.h"
-//
+
 MIDIControl* controls[4] = {
   new NoteButton(2, 36),
   new NoteButton(3, 40),
