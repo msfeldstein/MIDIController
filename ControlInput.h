@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 #include "MIDIControl.h"
-#include "MIDISetup.h"
 
 class ControlInput : public MIDIControl {
    public:
@@ -24,7 +23,7 @@ ControlInput::ControlInput(int pin, int midiControlValue) {
 void ControlInput::update() {
   int rawInput = analogRead(_pin);
   int newValue = map(rawInput, 0, 1023, 0, 127);
-  if (newValue != _lastValue) MIDI.sendControlChange(11, newValue, 1);
+//  if (newValue != _lastValue) MIDI.sendControlChange(11, newValue, 1);
   _lastValue = newValue;
 }
 

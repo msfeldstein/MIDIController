@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 #include "MIDIControl.h"
-#include "MIDISetup.h"
 
 class NoteButton : public MIDIControl {
   public:
@@ -26,10 +25,10 @@ void NoteButton::update() {
   int newState = digitalRead(_pin);
   if (newState != _currentState) {
      _currentState = newState;
-     if (newState == HIGH)
-       MIDI.sendNoteOn(_note, 127, 1);
-     else
-       MIDI.sendNoteOff(_note,  0, 1);
+//     if (newState == HIGH)
+//       MIDI.sendNoteOn(_note, 127, 1);
+//     else
+//       MIDI.sendNoteOff(_note,  0, 1);
   }
 }
 

@@ -1,19 +1,21 @@
 #include <MIDI.h>
-#include <midi_Defs.h>
-#include <midi_Message.h>
-#include <midi_Namespace.h>
-#include <midi_Settings.h>
+#include <Wire.h>
+#include <SFE_VL6180X.h>
 
-#include "MIDISetup.h"
+MIDI_CREATE_DEFAULT_INSTANCE();
+
 #include "MIDIControl.h"
 #include "ControlInput.h"
 #include "NoteButton.h"
+#include "DistanceControl.h"
 
-MIDIControl* controls[4] = {
+const int NUM_CONTROLS = 5;
+MIDIControl* controls[NUM_CONTROLS] = {
   new NoteButton(2, 36),
   new NoteButton(3, 40),
   new ControlInput(5, 10),
-  new ControlInput(7, 11)
+  new ControlInput(7, 11),
+  new DistanceControl(12)
 };
 
 int LED = 13;
@@ -24,12 +26,16 @@ void setup()
   MIDI.begin();
   // 115200 for hairless-midiserial
   Serial.begin(115200);
+  Serial.println("HellO");
   pinMode(LED, OUTPUT);
 }
 
 void loop()
 {
-  for (int i = 0; i < 4; i++) {
+  Serial.println("Hi");
+  delay(100);
+  for (int i = 0; i < NUM_CONTROLS; i++) {
     controls[i]->update(); 
   }
+ 
 }
